@@ -1,0 +1,11 @@
+package com.gaurav.service;
+
+import org.springframework.http.ResponseEntity;
+
+import com.gaurav.dto.CompanyDTO;
+
+public interface CompanyService {
+
+	public CompanyDTO saveCompany(CompanyDTO edto);
+	public List<CompanyDTO> getAllCompaniesDetails();
+}

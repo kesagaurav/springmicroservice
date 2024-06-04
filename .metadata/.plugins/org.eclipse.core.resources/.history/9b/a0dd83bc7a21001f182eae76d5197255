@@ -1,0 +1,40 @@
+package com.gaurav.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter @Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class CompanyDTO {
+
+	public int cid;
+	public String companyName;
+	
+	 converts entity into dto
+		public static EmployeeDTO valueOf(Employee e) {
+			EmployeeDTO edto = new EmployeeDTO();
+			//edto.setEid(e.getEid());
+			edto.setName(e.getName());
+			edto.setAge(e.getAge());
+			edto.setGender(e.getGender());
+			edto.setLocation(e.getLocation());
+//			CompanyDTO cdto = new CompanyDTO();
+//			cdto.setCid(e.getCid());
+			return edto;
+		}
+	
+		public Employee createEmployee() {
+			Employee e = new Employee();
+			//e.setEid(this.eid);
+			e.setName(this.getName());
+			e.setGender(this.getGender());
+			e.setLocation(this.getLocation());
+			e.setAge(this.getAge());
+			//e.setCid(this.getCdto().cid);
+			return e;
+		}
+	
+}

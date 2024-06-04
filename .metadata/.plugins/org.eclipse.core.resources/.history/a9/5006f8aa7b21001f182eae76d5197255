@@ -1,0 +1,10 @@
+package com.gaurav.service;
+
+import org.springframework.http.ResponseEntity;
+
+import com.gaurav.dto.CompanyDTO;
+
+public interface EmployeeService {
+
+	public CompanyDTO saveEmployee(CompanyDTO edto);
+}

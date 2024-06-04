@@ -1,0 +1,25 @@
+package com.gaurav.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.gaurav.dto.CompanyDTO;
+import com.gaurav.dto.CompanyDTO;
+import com.gaurav.model.Company;
+import com.gaurav.repository.CompanyRepository;
+import com.gaurav.service.CompanyService;
+@Service
+public class CompanyServiceImpl implements CompanyService {
+	@Autowired
+	private CompanyRepository eRepo;
+	
+	@Override
+	public CompanyDTO saveCompany(CompanyDTO edto) {
+		// TODO Auto-generated method stub
+		Company c=edto.createCompany();
+		CompanyDTO c1=edto.valueOf(c);
+		eRepo.save(c);
+		return c1;
+	}
+
+}

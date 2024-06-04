@@ -1,0 +1,9 @@
+package com.gaurav.service;
+
+import com.gaurav.dto.EmployeeDTO;
+import com.gaurav.model.Employee;
+
+public interface EmployeeService {
+
+	public ResponseEntity<EmployeeDTO> saveEmployee(EmployeeDTO edto);
+}
