@@ -1,0 +1,16 @@
+server:
+  port: 9091
+  
+spring:
+    application:
+      name: Company-MS
+    cloud:
+      consul:
+        discovery:
+          hostname: localhost 
+        config:
+          enabled: true
+          prefix: config
+          defaultContext: application   
+          profileSeperator: '::'
+          format: YAML

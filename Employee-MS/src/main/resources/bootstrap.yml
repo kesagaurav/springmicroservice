@@ -1,0 +1,35 @@
+#server:
+#  port: 9090
+#  
+#  spring:
+#    application:
+#      name: Employee-MS
+#    cloud:
+#      consul:
+#        config:
+#          enabled: true
+#          prefix: config
+#          defaultContext: application   
+#          profileSeperator: '::'
+#          format: YAML
+
+server:
+  port: 9090
+  
+spring:
+  application:
+    name: Employee-MS
+  cloud:
+    consul:
+      discovery:
+        hostname: localhost
+      config:
+        fail-fast: false
+        enabled: true
+        prefix: config
+        defaultContext: application
+        data-key: data
+        profileSeparator: '::'
+        format: YAML 
+      
+  

@@ -1,0 +1,37 @@
+consul related information.
+Consul provides a Key/Value store for storing the configuration details.
+
+During the bootstrap phase, the configuration data is loaded into the Spring environment.
+
+By default, the Consul server refers to the /config folder for configuration data.
+
+Create a /config folder in the Key/value store of the consul server
+Create a file as an application/data inside the config folder. Ending a key with / means it is a folder, so this creates a folder as an application and it contains a file as data.
+Place the common configuration data among all the microservices in the data file and choose the format as YAML.
+Consul supports the config data in YAML/JSON/HCL format.
+       HCL (Hashicorp Consul configuration Language) is the Consul’s own configuration language with the syntax as key = value.
+       
+       
+enabled: setting this value to "false" disables Consul Config
+prefix: sets the base folder for configuration values
+defaultContext: sets the folder name used by all applications
+profileSeparator:  sets the value of the separator used to separate the profile name in property sources with profiles
+format: format in which the configuration data is stored in consul, YAML/JSON/HCL format.
+
+If we try to access a microservice property for a given profile, the order of files used will be:
+config/testApp,dev/
+config/testApp/
+config/application,dev/
+config/application/
+
+after opening command prompt for the consul is the below coomand.
+consul agent -server -bootstrap-expect=1 -data-dir=consul-data2 -ui -bind=192.168.100.13      
+server: it is acting as consul server
+
+-bootstrap-expect=1: expecting only one server instance. No cluster.
+
+-data-dir: creates a folder with this name, where the consul data must be stored.
+
+ bind=192.168.100.13:  ipv4 address of the machine where the consul server is running
+
+ Login to localhost:8500/ui the port where consul will run by default
