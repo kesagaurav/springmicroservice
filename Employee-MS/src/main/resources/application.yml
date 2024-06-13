@@ -1,0 +1,8 @@
+resilience4j.circuitbreaker:
+  instances:
+    employeeService:
+      failureRateTreshold: 50   
+      ringBufferSizeInClosedState: 5 //minimum call attemps for closed state
+      ringBufferSizeInHalfOpenState: 3 //minimum call attemps for open state
+      waitDurationInOpenState: 20s
+      automaticTranstionFromOpenToHalfOpenEnabled: true

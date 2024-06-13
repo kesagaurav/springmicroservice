@@ -1,0 +1,49 @@
+A CircuitBreaker can be in one of the three states:
+
+CLOSED – when everything is fine and no short-circuiting involved
+
+OPEN – all requests are short-circuited
+
+HALF_OPEN – a configured amount of time since entering OPEN state has elapsed and CircuitBreaker allows requests to check if the remote service is back online
+
+The state of the CircuitBreaker changes from CLOSED to OPEN when the failure rate is equal or greater than a configurable threshold. For example, when more than 50% of the recorded calls have failed.
+
+We can configure the following settings:
+
+failureRateThreshold: When the failure rate is greater than or equal to this threshold percentage, the circuit breaker moves to the open state and starts short-circuiting calls
+
+ringBufferSizeInClosedState: The minimum number of call attempts to be made in a closed state
+
+ringBufferSizeInHalfOpenState: The minimum number of call attempts to be made in an open state
+
+waitDurationInOpenState: The time the circuit breaker should wait before moving from open to half-open state
+
+automaticTransitionFromOpenToHalfOpenEnabled: If it is set to true, it means it can automatically move from open to half-open state without any triggering call
+
+
+
+
+
+
+The circuit breaker pattern can follow both the time-based and count-based sliding window. What we have seen is a count-based sliding window configuration. 
+In this, the circuit will change the state depending on the number of requests received/number of requests failed which is on a count basis.
+
+slidingWindowType attribute helps us to choose between COUNT_BASED and TIME_BASED
+
+slowCallDurationThreshold:  The duration above which the calls are considered as slow
+
+slowCallRateThreshold: when the percentage of slow calls is equal to or greater than the threshold, the circuit breaker transitions to open
+
+waitDurationInOpenState: The time the circuit breaker should wait before moving from open to half-open state.
+resilience4j.circuitbreaker: 
+    instances: 
+        customerService:    
+            slidingWindowType: TIME_BASED  
+            slowCallDurationThreshold:  4000
+            slowCallRateThreshold:  50        
+            ringBufferSizeInClosedState: 5 
+            ringBufferSizeInHalfOpenState: 3 
+            waitDurationInOpenState: 30s 
+            automaticTransitionFromOpenToHalfOpenEnabled: true 
+//what is future in asynchronous communication
+it is an computaion object that will be availiable at somepoint of time in future

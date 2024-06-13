@@ -35,3 +35,13 @@ server: it is acting as consul server
  bind=192.168.100.13:  ipv4 address of the machine where the consul server is running
 
  Login to localhost:8500/ui the port where consul will run by default
+ 
+ 
+ //common data which is used in microservices databases
+ spring:
+ datasource:
+   username: postgres
+   password: root
+ jpa:
+   hibernate:
+    ddl-auto: create

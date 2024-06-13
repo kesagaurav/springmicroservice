@@ -1,0 +1,14 @@
+spring: 
+ cloud:
+  cloud:
+    gateway:
+      enabled: true
+      routes:
+      - id: Company-MS
+        uri: lb://Company-MS
+        predicates: 
+      -     Path=/company/**
+      - id: Employee-MS
+        uri: lb://Employee-MS
+        predicates: 
+      -     Path=/employee/**

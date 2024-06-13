@@ -50,6 +50,16 @@ public class CompanyServiceImpl implements CompanyService {
 //		}
 //
 //		return edto;
+		//this is for using resilence 4j
+//		if(id==2) {
+//			throw new RuntimeException();
+//		}
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return CompanyDTO.valueOf(eRepo.findById(id).get());
 	}
 }
